@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <layer-list android:opacity="transparent">
+            <item android:width="100dp" android:end="300dp">
+                <bitmap android:src="@drawable/signup_bordershape" android:gravity="center"/>
+            </item>
+        </layer-list>
+    </item>
+</selector>
