@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="3"
-    android:background="#f4f4f9"
+    android:background="@drawable/backgroundsplash"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,51 +17,36 @@
         android:orientation="vertical"
         android:weightSum="3.5">
 
+
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="210dp"
-            android:background="#2e3094"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profilimage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/homeimage"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/ic_user"
+            android:scaleType="fitCenter"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
 
-            app:layout_constraintVertical_bias="0.914" />
+            app:layout_constraintVertical_bias="0.692" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="0.01"
+    android:background="#2e3094"
+    android:layout_marginRight="25dp"
+    android:layout_marginLeft="25dp"
+    />
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
-
         app:layout_constraintEnd_toEndOf="parent">
-
-        <ImageView
-            android:id="@+id/editprofile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/edit"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.07"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.028" />
 
         <TextView
             android:id="@+id/textView7"
@@ -96,8 +81,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/cairo_semibold"
             android:text="لاسم"
-            android:textSize="18sp"
             android:textColor="#2e3094"
+            android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.904"
@@ -112,12 +97,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/cairo_semibold"
-            android:text="محمد احمد علي"
             android:textColor="#2e3094"
-            android:textSize="18sp"
+            android:textSize="13sp"
+            android:text=" "
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.095"
+            app:layout_constraintHorizontal_bias="0.09"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.211" />
@@ -126,7 +111,7 @@
             android:id="@+id/textView9"
             android:layout_width="match_parent"
             android:layout_height="2dp"
-
+            android:text=" "
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:background="#2e3094"
@@ -143,8 +128,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/cairo_semibold"
             android:text="رقم الموبيل "
-            android:textSize="18sp"
             android:textColor="#2e3094"
+            android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.951"
@@ -157,9 +142,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/cairo_semibold"
-            android:text="01144167167"
-            android:textSize="18sp"
             android:textColor="#2e3094"
+            android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.091"
@@ -167,59 +151,18 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.33" />
 
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="#2e3094"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/cairo_semibold"
-            android:text="عدد التحاليل التي قمت بها"
-            android:textColor="#2e3094"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.909"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.446" />
-
-        <TextView
-            android:id="@+id/numbertestidprofil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/cairo_semibold"
-            android:text="30"
-            android:textSize="18sp"
-            android:textColor="#2e3094"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textView12"
-            app:layout_constraintHorizontal_bias="0.155"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.447" />
 
         <ImageView
             android:id="@+id/lougoutimag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/lougoutapp"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:background="@drawable/lougoutapp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView11"
-            app:layout_constraintVertical_bias="0.834" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.822" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

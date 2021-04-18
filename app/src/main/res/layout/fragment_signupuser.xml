@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="4"
-  >
+    tools:context=".fragemnt.signupuser">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -64,7 +65,7 @@
                 android:text="سجل الآن" />
 
             <TextView
-                android:id="@+id/signupfromlogin"
+                android:id="@+id/loginfromsignup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/cairo_semibold"
@@ -92,7 +93,7 @@
                 android:textSize="9sp"
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/signupfromlogin"
+                app:layout_constraintEnd_toStartOf="@+id/loginfromsignup"
                 app:layout_constraintHorizontal_bias="0.945"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -111,6 +112,7 @@
                 android:lineSpacingExtra="4sp"
                 android:textColor="#2e3094"
                 android:textSize="12sp"
+                android:textDirection="rtl"
                 android:textStyle="normal"
                 android:paddingRight="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -121,6 +123,7 @@
                 app:layout_constraintVertical_bias="0.36" />
 
             <EditText
+                android:textDirection="rtl"
                 android:id="@+id/editText_phon_number_sign_in_id"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -133,9 +136,12 @@
                 android:hint="رقم الهاتف"
                 android:lineSpacingExtra="4sp"
                 android:textColor="#2e3094"
-                android:textSize="12sp"
+                android:textSize="13sp"
+                android:textAlignment="gravity"
+
                 android:textStyle="normal"
                 android:paddingRight="15dp"
+                android:gravity="right|center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.488"
@@ -151,11 +157,10 @@
                 android:layout_margin="20dp"
                 android:background="@drawable/shapbutton"
                 android:fontFamily="@font/cairo_semibold"
-                android:gravity="top|center"
+                android:gravity="center"
                 android:lineSpacingExtra="6sp"
                 android:textColor="#ffffff"
                 android:textSize="15sp"
-
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -236,13 +236,18 @@ android:weightSum="3.5">
         android:layout_marginRight="25dp"
         android:background="#2e3094"
         />
-
+<RadioGroup
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:id="@+id/radiogroup"
+    android:layout_weight="2"
+    android:gravity="right"
+    >
 
     <RadioButton
         android:id="@+id/inlab_radio_id"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="0.8"
+        android:layout_height="wrap_content"
         android:text="حجز موعد بالمختبر"
         android:layoutDirection="rtl"
         android:textAlignment="textStart"
@@ -256,10 +261,10 @@ android:weightSum="3.5">
     <RadioButton
         android:id="@+id/inhome_test_id"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="0.8"
+        android:layout_height="wrap_content"
         android:text="حجز زياره منزليه"
         android:layoutDirection="rtl"
+        android:paddingRight="10dp"
         android:textAlignment="textStart"
         android:layout_marginRight="25dp"
         android:fontFamily="@font/cairo_semibold"
@@ -268,6 +273,9 @@ android:weightSum="3.5">
         android:textColor="#2e3094"
         android:layout_marginTop="5dp"
         />
+</RadioGroup>
+
+
 </LinearLayout>
 
 <LinearLayout
@@ -438,6 +446,7 @@ android:weightSum="3.5">
             android:lineSpacingExtra="15sp"
             android:text="تحميل "
             android:layout_marginLeft="25dp"
+            android:background="@drawable/shapbutton"
             />
         <TextView
             android:layout_width="0dp"
@@ -460,6 +469,7 @@ android:weightSum="3.5">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFF"
+        android:background="@drawable/shapbutton"
         android:text="أرسل"
         android:fontFamily="@font/cairo_semibold"
         />

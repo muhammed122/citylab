@@ -3,19 +3,20 @@
     package="com.medical.citylap">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.CityLap">
-        <activity android:name=".activity.ResultScreen"></activity>
-        <activity android:name=".activity.SplashScreen" />
+        android:supportsRtl="false"
+        android:theme="@style/Theme.CityLap"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".activity.ResultActivty"></activity>
         <activity android:name=".activity.BookingScreen" />
         <activity android:name=".activity.Home" />
-        <activity android:name=".activity.LoginScreen">
+        <activity android:name=".activity.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

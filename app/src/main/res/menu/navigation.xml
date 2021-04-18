@@ -8,17 +8,17 @@
 
     <item
         android:id="@+id/navigation_location"
-        android:icon="@drawable/location"
+        android:icon="@drawable/ic_baseline_location_on_24"
         android:title="Location"/>
 
     <item
         android:id="@+id/navigation_chat"
-        android:icon="@drawable/iconperson"
+        android:icon="@drawable/ic_baseline_chat_24"
         android:title="chat"/>
 
     <item
         android:id="@+id/navigation_profil"
-        android:icon="@drawable/iconperson"
+        android:icon="@drawable/ic_baseline_person_24"
         android:title="profil"/>
 
 </menu>
