@@ -5,18 +5,18 @@ import android.graphics.Bitmap;
 public class FileData {
 
     Bitmap bitmap;
-    byte [] bytes ;
+    String base64;
 
-    public FileData(Bitmap bitmap, byte[] bytes) {
+    public FileData(Bitmap bitmap, String base64) {
         this.bitmap = bitmap;
-        this.bytes = bytes;
+        this.base64 = base64;
     }
 
     public Bitmap getBitmap() {
         return bitmap;
     }
 
-    public byte[] getBytes() {
-        return bytes;
+    public String getBase64() {
+        return base64;
     }
 }

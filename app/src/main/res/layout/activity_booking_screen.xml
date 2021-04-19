@@ -38,6 +38,7 @@ android:weightSum="3.5">
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+            android:id="@+id/backfrom_reservation_to_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
@@ -279,6 +280,7 @@ android:weightSum="3.5">
 </LinearLayout>
 
 <LinearLayout
+    android:id="@+id/layoutaddress"
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:layout_weight="0.7"
@@ -305,7 +307,7 @@ android:weightSum="3.5">
             android:textColor="#2e3094"
             android:textSize="15sp"
             android:textStyle="bold"
-            tools:text="العنوان" />
+            android:text="العنوان" />
 
         <EditText
             android:id="@+id/addressclint_id_booking"
@@ -313,11 +315,17 @@ android:weightSum="3.5">
             android:layout_height="0dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
+            android:textDirection="rtl"
             android:layout_marginRight="15dp"
             android:layout_weight="1.1"
             android:background="@drawable/signup_bordershape"
-            android:textDirection="rtl"
-            android:textSize="13sp" />
+    android:gravity="right"
+            android:paddingRight="15dp"
+            android:layout_gravity="right"
+            android:textSize="13sp"
+
+
+            />
 
 
     </LinearLayout>
@@ -336,7 +344,7 @@ android:weightSum="3.5">
             android:textSize="12sp"
             android:textColor="#2e3094"
             android:lineSpacingExtra="15sp"
-            tools:text="رقم المبنى"
+            android:text="رقم المبنى"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.954"
@@ -353,7 +361,7 @@ android:weightSum="3.5">
             android:textSize="12sp"
             android:textColor="#2e3094"
             android:lineSpacingExtra="15sp"
-            tools:text="رقم الدور"
+            android:text="رقم الدور"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.57"
@@ -370,7 +378,7 @@ android:weightSum="3.5">
             android:textSize="12sp"
             android:textColor="#2e3094"
             android:lineSpacingExtra="15sp"
-            tools:text="رقم الشقه"
+            android:text="رقم الشقه"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.138"
@@ -425,6 +433,7 @@ android:weightSum="3.5">
     android:layout_weight="0.99"
     android:orientation="vertical"
     android:weightSum="2"
+    android:gravity="center"
     >
     <LinearLayout
         android:layout_width="match_parent"
@@ -449,6 +458,7 @@ android:weightSum="3.5">
             android:background="@drawable/shapbutton"
             />
         <TextView
+            android:id="@+id/text_imag_reservation"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="2"
@@ -456,12 +466,21 @@ android:weightSum="3.5">
             android:textSize="15dp"
             android:text="تحميل صورة الروشته"
             android:gravity="center|right"
+            android:paddingRight="15dp"
             android:fontFamily="@font/cairo_semibold"
             android:textColor="#2e3094"
             android:layout_marginRight="25dp"
             android:layout_marginLeft="15dp"
-            />
 
+            />
+        <ImageView
+            android:id="@+id/imag_imag_reservation"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="2"
+            android:visibility="gone"
+            />
     </LinearLayout>
     <Button
         android:id="@+id/submet_id_booking"

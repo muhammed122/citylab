@@ -50,6 +50,8 @@ intil(view);
             public void onClick(View v) {
                 SharedPreferences preferences = getContext().getSharedPreferences("MY_APP", Context.MODE_PRIVATE);
                 preferences.edit().remove("phonenumberuser").commit();
+                preferences.edit().remove("nameuserprofile").commit();
+                preferences.edit().remove("phonenumberuser").commit();
                 final FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.replace(R.id.fragment_container, new LoginFragment(), "NewFragmentTag");
                 ft.commit();
@@ -66,55 +68,69 @@ public void intil(View view)
 }
 public void getdata()
 {
-    User user=new User();
-    RetrofitClint.getInstance().userlogin("01119082271").enqueue(new Callback<Loginmodle>() {
-        @Override
-        public void onResponse(Call<Loginmodle> call, Response<Loginmodle> response1) {
-            token=response1.body().getData().getToken();
-            Log.e(TAG, "onResponseprofil: "+response1.body().getData().getToken());
+    SharedPreferences preferences3 = getContext().getSharedPreferences("MY_APP", Context.MODE_PRIVATE);
+    String retrivedphonenumber_profil  = preferences3.getString("phonenumberuserprofil",null);
+    String retrivedname_user  = preferences3.getString("nameuserprofile",null);
+    String retrivedphonenumber = preferences3.getString("phonenumberuser", null);//second parameter default value.
 
-            if(response1.isSuccessful())
-            {
-                RetrofitClint.getInstance().getalluer("Bearer "+response1.body().getData().getToken()).enqueue(new Callback<UsersResponse>() {
-                    @Override
-                    public void onResponse(Call<UsersResponse> call, Response<UsersResponse> response2) {
-                        if (response2.isSuccessful())
-                        {
+   // Log.d(TAG, "getdata: "+retrivedname_user);
+    if(retrivedname_user !=null)
+    {
+        name.setText(retrivedname_user);
+        phonnumber.setText(retrivedphonenumber);
+        Log.d(TAG, "getdata: "+retrivedname_user);
+    }
+    else {
 
-                            SharedPreferences preferences = getContext().getSharedPreferences("MY_APP", Context.MODE_PRIVATE);
-                            String retrivedphonenumber  = preferences.getString("phonenumberuser",null);//second parameter default value.
-                            Log.e(TAG, "onResponseprofil: "+response2.body().getMessage());
-                            for(int i=0;i<response2.body().getData().size();i++)
-                            {
-                                if(retrivedphonenumber.equals(response2.body().getData().get(i).getPhoneNumber()))
-                                {
-                                    name.setText(response2.body().getData().get(i).getName());
-                                    phonnumber.setText(response2.body().getData().get(i).getPhoneNumber());
+        User user = new User();
+        RetrofitClint.getInstance().userlogin("01119082271").enqueue(new Callback<Loginmodle>() {
+            @Override
+            public void onResponse(Call<Loginmodle> call, Response<Loginmodle> response1) {
+                token = response1.body().getData().getToken();
+                Log.e(TAG, "onResponseprofil: " + response1.body().getData().getToken());
+               // Log.d(TAG, "getdata: "+retrivedphonenumber_profil);
+                if (response1.isSuccessful()) {
+                    RetrofitClint.getInstance().getalluer("Bearer " + response1.body().getData().getToken()).enqueue(new Callback<UsersResponse>() {
+                        @Override
+                        public void onResponse(Call<UsersResponse> call, Response<UsersResponse> response2) {
+                            if (response2.isSuccessful()) {
 
-                                    break;
+                                SharedPreferences preferences = getContext().getSharedPreferences("MY_APP", Context.MODE_PRIVATE);
+                                String retrivedphonenumber = preferences.getString("phonenumberuser", null);//second parameter default value.
+                                Log.e(TAG, "onResponseprofil: " + response2.body().getMessage());
+                              int g=0;
+                                for (int i = 0; i < response2.body().getData().size(); i++) {
+                                    if (retrivedphonenumber.equals(response2.body().getData().get(i).getPhoneNumber())) {
+                                        name.setText(response2.body().getData().get(i).getName());
+                                        phonnumber.setText(response2.body().getData().get(i).getPhoneNumber());
+                                          g=i;
+                                        break;
+                                    }
+
                                 }
 
-                            }
 
+                                preferences.edit().putString("phonenumberuserprofil",response2.body().getData().get(g).getPhoneNumber()).apply();
+                                preferences.edit().putString("nameuserprofile",response2.body().getData().get(g).getName()).apply();
+
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<UsersResponse> call, Throwable t) {
 
                         }
-                    }
+                    });
 
-                    @Override
-                    public void onFailure(Call<UsersResponse> call, Throwable t) {
 
-                    }
-                });
+                }
+            }
 
+            @Override
+            public void onFailure(Call<Loginmodle> call, Throwable t) {
 
             }
-        }
-
-        @Override
-        public void onFailure(Call<Loginmodle> call, Throwable t) {
-
-        }
-    });
-
+        });
+    }
 }
 }

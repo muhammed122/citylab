@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.medical.citylap.R;
 import com.medical.citylap.MyPreference;
+import com.medical.citylap.activity.BookingScreen;
 import com.medical.citylap.activity.ResultActivty;
 import com.medical.citylap.activity.SplashScreen;
 import com.medical.citylap.modles.Result;
@@ -74,7 +75,12 @@ public static Fragment fragment=new Offerfragment();
 
             }
         });
-
+        booking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+           startActivity(new Intent(getActivity(), BookingScreen.class));
+            }
+        });
      return view;
     }
     public void intilazation(View view)
