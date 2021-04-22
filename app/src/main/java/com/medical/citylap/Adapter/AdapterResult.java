@@ -2,23 +2,21 @@ package com.medical.citylap.Adapter;
 
 import android.content.Context;
 import android.net.Uri;
+import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.medical.citylap.R;
-import com.medical.citylap.modles.Datum;
 import com.medical.citylap.modles.Result;
 import com.medical.citylap.modles.ResultApi;
 import com.medical.citylap.modles.Resultcopy;
@@ -61,12 +59,22 @@ public class AdapterResult extends RecyclerView.Adapter<AdapterResult.ViewHolder
                  holder.imageViewmax.setImageResource(R.drawable.ic_baseline_minimize_24);
              }
 
+        if( resultApi.getData().get(position).getMediaType()==1)
+        {
+            //file
+            holder.recycler.setVisibility(View.GONE);
+            holder.noimag.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            holder.recycler.setLayoutManager(new LinearLayoutManager(mContext,LinearLayoutManager.HORIZONTAL,false));
+            holder.adapter=new AdapteronlyImage(mContext);
+            holder.adapter.setlist(resultApi.getData().get(position).getFiles());
+            holder.recycler.setAdapter(holder.adapter);
+            Log.d(TAG, "onBindViewHolder: "+resultApi.getData().get(position).getFiles() );
+        }
         holder.typetest.setText(resultApi.getData().get(position).getNotes()+"");
-        holder.recycler.setLayoutManager(new LinearLayoutManager(mContext,LinearLayoutManager.HORIZONTAL,false));
-        holder.adapter=new AdapteronlyImage(mContext);
-        holder.adapter.setlist(resultApi.getData().get(position).getFiles());
-        holder.recycler.setAdapter(holder.adapter);
-        Log.d(TAG, "onBindViewHolder: "+resultApi.getData().get(position).getFiles() );
+
 
     }
 
@@ -81,10 +89,10 @@ public class AdapterResult extends RecyclerView.Adapter<AdapterResult.ViewHolder
     public class ViewHolder2 extends RecyclerView.ViewHolder
     {
         ImageView imageViewmax,imageViewmin;
-        LinearLayout layout;
+        LinearLayout layout,linearLayout_pdf;
         RecyclerView recycler;
         AdapteronlyImage adapter;
-        TextView typetest,date;
+        TextView typetest,date,noimag;
 
         public ViewHolder2(@NonNull View itemView) {
             super(itemView);
@@ -92,15 +100,34 @@ public class AdapterResult extends RecyclerView.Adapter<AdapterResult.ViewHolder
             layout=itemView.findViewById(R.id.body_expand_result_id);
             recycler = itemView.findViewById(R.id.recyclerview_image_inseid_result_id);
             typetest=itemView.findViewById(R.id.name_of_singl_rsult_id);
+            noimag=itemView.findViewById(R.id.textnnoimage);
+            linearLayout_pdf=itemView.findViewById(R.id.linear_download_pdf);
+
+            linearLayout_pdf.setOnClickListener(new View.OnClickListener() {
+                @RequiresApi(api = Build.VERSION_CODES.R)
+                @Override
+                public void onClick(View v) {
+
+//                    new DownloadPDF().
+//                            execute("http://"+resultApi.getData().get(getAdapterPosition()).getFiles().get(0).toString());
+//
+//
+//                    final Dialog dialog = new Dialog(mContext);
+//                    dialog.setContentView(R.layout.custompdfview);       // Include dialog.xml file
+//                    dialog.show();      // Include dialog.xml file
+//                    PDFView PDF=dialog.findViewById(R.id.pdfView);
+//
+
+                }
+            });
+
             imageViewmax.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
                     Resultcopy resultcopy   = re.get(getAdapterPosition());
                     resultcopy.setExpand(!resultcopy.isExpand());
-
                     notifyItemChanged(getAdapterPosition());
-
                 }
             });
         }

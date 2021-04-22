@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ import com.medical.citylap.modles.ResultApi;
 import com.medical.citylap.modles.Resultcopy;
 import com.medical.citylap.modles.Resultss;
 import com.medical.citylap.viewModel.ResultuserViewmodle;
+import com.ramotion.cardslider.CardSnapHelper;
 
 import java.util.ArrayList;
 
@@ -40,6 +42,7 @@ public class ResultActivty extends AppCompatActivity {
     TextView tvView;
     ImageView imgview;
     ImageView imageView_back;
+    ProgressBar progressBar;
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +52,8 @@ public class ResultActivty extends AppCompatActivity {
 
 
         if (isConnected()) {
-            LoadingDialog.showDialog(this);
+            //LoadingDialog.showDialog(this);
+            progressBar.setVisibility(View.VISIBLE);
             mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
             adapterResult=new AdapterResult(this);
             resultuserViewmodle= ViewModelProviders.of(this).get(ResultuserViewmodle.class);
@@ -57,7 +61,7 @@ public class ResultActivty extends AppCompatActivity {
                 @Override
                 public void onChanged(ResultApi resultApi) {
 
-                    //  Log.d(TAG, "onChanged: "+resultApi.getData().get(0).getFiles().get(0));
+                    //  Log.d("TAG", "onChanged: "+resultApi.getData().get(0).getFiles().get(0));
                     for(int i=0;i<resultApi.getData().size();i++)
                     {Resultcopy re=new Resultcopy();
                         listofresultapi.add(re);
@@ -65,9 +69,15 @@ public class ResultActivty extends AppCompatActivity {
 
                     adapterResult.setlist2(resultApi,listofresultapi);
                     mRecyclerView.setAdapter(adapterResult);
+                    if(listofresultapi.size()==0)
+                    {
+                        mRecyclerView.setVisibility(View.GONE);
+                        tvView.setVisibility(View.VISIBLE);
+                    tvView.setText("لا يوجد نتائج حاليا");
+                    }
                 }
             });
-            LoadingDialog.hideDialog();
+            progressBar.setVisibility(View.GONE);
         }
         else {
             mRecyclerView.setVisibility(View.GONE);
@@ -75,7 +85,7 @@ public class ResultActivty extends AppCompatActivity {
             imgview.setVisibility(View.VISIBLE);
             Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
         }
-
+        LoadingDialog.hideDialog();
 
         imageView_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,10 +99,10 @@ public class ResultActivty extends AppCompatActivity {
     {
 
         mRecyclerView = findViewById(R.id.recyclerview_result);
-
         tvView=findViewById(R.id.nointerntid);
         imgview=findViewById(R.id.imageView2_no);
         imageView_back=findViewById(R.id.imagebutton_back_from_result_to_home);
+        progressBar=findViewById(R.id.prograbarresult);
     }
     @RequiresApi(api = Build.VERSION_CODES.M)
     public boolean isConnected() {

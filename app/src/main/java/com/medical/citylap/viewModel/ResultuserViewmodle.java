@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.medical.citylap.RetrofitClint;
+import com.medical.citylap.helperfunction.LoadingDialog;
 import com.medical.citylap.modles.AllOffer;
 import com.medical.citylap.modles.Result;
 import com.medical.citylap.modles.ResultApi;
@@ -25,11 +26,13 @@ public class ResultuserViewmodle extends ViewModel {
 
     public  MutableLiveData<ResultApi> getResultuser(String token)
     {
+
        RetrofitClint.getInstance().getResults("Bearer "+token).enqueue(new Callback<ResultApi>() {
            @Override
            public void onResponse(Call<ResultApi> call, Response<ResultApi> response) {
+               if(response.body().getData() !=null)
                resultmutbel.setValue(response.body());
-               Log.d(TAG, "onResponse: "+response.body().getStatus());
+               //Log.d(TAG, "onResponse: "+response.body().getStatus());
            }
 
            @Override

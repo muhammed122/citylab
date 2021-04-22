@@ -77,18 +77,27 @@ public ImageView image;
             olddate=itemView.findViewById(R.id.end_data_offer_id);
             newdate=itemView.findViewById(R.id.start_data_offer_id);
             image=itemView.findViewById(R.id.image_offer_id);
+            discreption.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final Dialog dialog = new Dialog(mContext);
+                    dialog.setContentView(R.layout.customdaliog_text);       // Include dialog.xml file
+                    dialog.show();      // Include dialog.xml file
+                    TextView textView=dialog.findViewById(R.id.text_in_dalog);
+                    textView.setText(listoffer.get(getAdapterPosition()).getDescription().toString());
 
+                }
+            });
             image.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     final Dialog dialog = new Dialog(mContext);
                     dialog.setContentView(R.layout.custom_daliog);       // Include dialog.xml file
-                    dialog.show();
-
+                    dialog.show();      // Include dialog.xml file
                     ImageView imaged=dialog.findViewById(R.id.image_in_dalog);
-
-                    Glide.with(mContext).load("http://"+listoffer.get(getAdapterPosition()))
+                    Glide.with(mContext).load("http://"+listoffer.get(getAdapterPosition()).getFiles().get(0))
                             .into(imaged);
+
                 }
             });
         }

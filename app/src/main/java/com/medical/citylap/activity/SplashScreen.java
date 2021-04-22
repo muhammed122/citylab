@@ -46,7 +46,7 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 SharedPreferences preferences = SplashScreen.this.getSharedPreferences("MY_APP", Context.MODE_PRIVATE);
-                String retrivedToken  = preferences.getString("phonenumberuser",null);
+                final String retrivedToken  = preferences.getString("phonenumberuser",null);
                 //second parameter default value.
                 if(retrivedToken !=null) {
                     RetrofitClint.getInstance().userlogin(retrivedToken).enqueue(new Callback<Loginmodle>() {

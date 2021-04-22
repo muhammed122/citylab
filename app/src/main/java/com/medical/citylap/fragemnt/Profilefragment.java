@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,7 +31,7 @@ import static android.content.ContentValues.TAG;
 public class Profilefragment extends Fragment {
 TextView name,phonnumber;
 
-ImageView logout;
+Button logout;
 public String token;
 
     @Override
@@ -63,7 +64,7 @@ public void intil(View view)
 {
     name=view.findViewById(R.id.nameclintidprofle);
     phonnumber=view.findViewById(R.id.phonnumberclintprofile);
-    logout=view.findViewById(R.id.lougoutimag);
+    logout=view.findViewById(R.id.lougout_button);
 
 }
 public void getdata()
@@ -86,10 +87,11 @@ public void getdata()
         RetrofitClint.getInstance().userlogin("01119082271").enqueue(new Callback<Loginmodle>() {
             @Override
             public void onResponse(Call<Loginmodle> call, Response<Loginmodle> response1) {
-                token = response1.body().getData().getToken();
-                Log.e(TAG, "onResponseprofil: " + response1.body().getData().getToken());
+
+               // Log.e(TAG, "onResponseprofil: " + response1.body().getData().getToken());
                // Log.d(TAG, "getdata: "+retrivedphonenumber_profil);
                 if (response1.isSuccessful()) {
+                 //2   token = response1.body().getData().getToken();
                     RetrofitClint.getInstance().getalluer("Bearer " + response1.body().getData().getToken()).enqueue(new Callback<UsersResponse>() {
                         @Override
                         public void onResponse(Call<UsersResponse> call, Response<UsersResponse> response2) {
@@ -132,5 +134,6 @@ public void getdata()
             }
         });
     }
+
 }
 }

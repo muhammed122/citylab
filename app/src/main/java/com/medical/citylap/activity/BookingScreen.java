@@ -48,7 +48,8 @@ RadioButton radioButtonhome;
 RadioButton radioButtonlab;
 ImageView imageViewback;
 LinearLayout linearLayout;
-    List<FileData> files = new ArrayList<>();
+    List<FileData> files = new ArrayList<FileData>();
+    FileData fileData;
     ByteArrayOutputStream bytes;
     InputStream inputStream;
     public static final int REQUEST_CAMERA_CODE = 101;
@@ -209,10 +210,10 @@ buttongetimage.setOnClickListener(new View.OnClickListener() {
                 //    inputStream = requireContext().getContentResolver().openInputStream(data.getData());
                 files.add(new FileData(bm, sImage));
 
-
+                 fileData=new FileData(bm, sImage);
                 textView.setVisibility(View.GONE);
                 imageView.setVisibility(View.VISIBLE);
-                imageView.setImageBitmap(files.get(0).getBitmap());
+                imageView.setImageBitmap(fileData.getBitmap());
 
 
             } catch (IOException e) {
@@ -233,12 +234,14 @@ buttongetimage.setOnClickListener(new View.OnClickListener() {
 
             //add image to adapter
             files.add(new FileData(thumbnail, sImage));
-            textView.setVisibility(View.GONE);
-            imageView.setVisibility(View.VISIBLE);
+
             imageView.setImageBitmap(files.get(0).getBitmap());
 
 
-
+            fileData=new FileData(thumbnail, sImage);
+            textView.setVisibility(View.GONE);
+            imageView.setVisibility(View.VISIBLE);
+            imageView.setImageBitmap(fileData.getBitmap());
         }
 
     }

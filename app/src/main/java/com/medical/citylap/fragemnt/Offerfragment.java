@@ -21,6 +21,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,15 +34,18 @@ import com.medical.citylap.viewModel.OffersViewModel;
 
 import java.util.ArrayList;
 
+import static androidx.constraintlayout.motion.utils.Oscillator.TAG;
+
 
 public class Offerfragment extends Fragment {
  OffersViewModel offersViewModel;
- public ArrayList<Datum> allOffer=new ArrayList<Datum>();
+ public ArrayList<Datum> allOffer=new ArrayList<>();
  OfferAdapter offerAdapter;
  RecyclerView mRecyclerView;
  ImageView ivView;
  TextView tvView;
 ImageView imgview;
+ProgressBar progressBar;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,26 +59,26 @@ ImageView imgview;
         View view= inflater.inflate(R.layout.fragment_offerfragment, container, false);
         intilazation(view);
         if (isConnected()) {
-            LoadingDialog.showDialog(getActivity());
-
-
+          //  LoadingDialog.showDialog(getActivity());
+            progressBar.setVisibility(View.VISIBLE);
             offersViewModel= ViewModelProviders.of(getActivity()).get(OffersViewModel.class);
             offersViewModel.getAllOffer().observe(getViewLifecycleOwner(), new Observer<AllOffer>() {
                 @Override
                 public void onChanged(AllOffer allOffers) {
+                    Log.d(TAG, "onChanged: "+allOffers.getData().size());
                     offerAdapter.setlist((ArrayList<Datum>) allOffers.getData());
                     mRecyclerView.setAdapter(offerAdapter);
-
+                    progressBar.setVisibility(View.GONE);
                 }
             });
-            LoadingDialog.hideDialog();
+
         } else {
             mRecyclerView.setVisibility(View.GONE);
             tvView.setVisibility(View.VISIBLE);
             imgview.setVisibility(View.VISIBLE);
             Toast.makeText(getContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
         }
-
+       // LoadingDialog.hideDialog();
 
         ivView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,7 +110,7 @@ ImageView imgview;
         ivView=view.findViewById(R.id.imagebutton_back_from_offer_to_home);
         tvView=view.findViewById(R.id.nointerntid);
         imgview=view.findViewById(R.id.imageView2_no);
-
+progressBar=view.findViewById(R.id.prograbaroffer);
 
 
     }
