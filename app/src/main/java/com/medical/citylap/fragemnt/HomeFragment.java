@@ -25,9 +25,12 @@ import com.medical.citylap.Adapter.SliderAdapterExample;
 import com.medical.citylap.R;
 import com.medical.citylap.MyPreference;
 import com.medical.citylap.RetrofitClint;
+import com.medical.citylap.activity.Blood_activity;
 import com.medical.citylap.activity.BookingScreen;
 import com.medical.citylap.activity.ResultActivty;
 import com.medical.citylap.activity.SplashScreen;
+import com.medical.citylap.activity.Suger_activity;
+import com.medical.citylap.activity.Wight_acticty;
 import com.medical.citylap.modles.AllOffer;
 import com.medical.citylap.modles.Datum;
 import com.medical.citylap.modles.Result;
@@ -44,11 +47,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.content.ContentValues.TAG;
+
 
 public class HomeFragment extends Fragment {
-Button result,booking,aboutus,seealloffer,suger,prusioer,perfectwight;
-ImageView offer_one,offer_two;
-TextView title_one,tile_two,start_one,start_two,end_one,end_two,pric_old_one,price_old_two,price_new_one,price_new_two,no_offer_one,no_ffer_two;
+    Button result,booking,aboutus,seealloffer,suger,prusioer,perfectwight;
+    ImageView offer_one,offer_two;
+    TextView title_one,tile_two,start_one,start_two,end_one,end_two,pric_old_one,price_old_two,price_new_one,price_new_two,no_offer_one,no_ffer_two;
     Datum datum1;
     Datum datum2;
     public  int numbercheck;
@@ -62,7 +67,6 @@ public static Fragment fragment=new Offerfragment();
         super.onCreate(savedInstanceState);
 
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -143,6 +147,24 @@ public static Fragment fragment=new Offerfragment();
 
 
         });
+        suger.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            startActivity(new Intent(getActivity(), Suger_activity.class));
+            }
+        });
+        perfectwight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), Wight_acticty.class));
+            }
+        });
+        prusioer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), Blood_activity.class));
+            }
+        });
 
      return view;
     }
@@ -175,88 +197,50 @@ public static Fragment fragment=new Offerfragment();
     }
     public int setnewoffers()
     {
-        datum1=new Datum();
-         datum2=new Datum();
-        RetrofitClint.getInstance().getoffer().enqueue(new Callback<AllOffer>() {
-            @Override
-            public void onResponse(Call<AllOffer> call, Response<AllOffer> response) {
 
-                if(response.body().getData().size()>0)
-                {
-                 if(response.body().getData().size()==1)
-                 {
-                     datum1=response.body().getData().get(response.body().getData().size()-1);
-                     Glide.with(getActivity()).load("http://" + datum1.getFiles().get(0))
-                             .into(offer_two);
-                     tile_two.setText(datum1.getTitle());
-                     start_two.setText(datum1.getStartTime().split(" ")[0]);
-                     end_two.setText(datum1.getEndTime().split(" ")[0]);
-                     price_old_two.setText(datum1.getPreviousPrice().toString());
-                     price_new_two.setText(datum1.getCurrentPrice().toString());
-                     no_ffer_two.setVisibility(View.GONE);
+            RetrofitClint.getInstance().getoffer().enqueue(new Callback<AllOffer>() {
+                @Override
+                public void onResponse(Call<AllOffer> call, Response<AllOffer> response) {
 
-                     SharedPreferences mPrefs  = getContext().getSharedPreferences("MY_APP", Context.MODE_PRIVATE);
+                    if (response.body().getData().size() > 0) {
+                        if (response.body().getData().size() == 1) {
+                            datum1 = response.body().getData().get(response.body().getData().size() - 1);
+                            Glide.with(getActivity()).load("http://" + datum1.getFiles().get(0))
+                                    .into(offer_two);
+                            tile_two.setText(datum1.getTitle());
+                            start_two.setText(datum1.getStartTime().split(" ")[0]);
+                            end_two.setText(datum1.getEndTime().split(" ")[0]);
+                            price_old_two.setText(datum1.getPreviousPrice().toString());
+                            price_new_two.setText(datum1.getCurrentPrice().toString());
+                            no_ffer_two.setVisibility(View.GONE);
+                        }
+                        if (response.body().getData().size() > 1) {
+                            datum1 = response.body().getData().get(response.body().getData().size() - 1);
+                            datum2 = response.body().getData().get(response.body().getData().size() - 2);
+                            Glide.with(getActivity()).load("http://" + datum1.getFiles().get(0))
+                                    .into(offer_two);
+                            tile_two.setText(datum1.getTitle());
+                            start_two.setText(datum1.getStartTime().split(" ")[0]);
+                            end_two.setText(datum1.getEndTime().split(" ")[0]);
+                            price_old_two.setText(datum1.getPreviousPrice().toString());
+                            price_new_two.setText(datum1.getCurrentPrice().toString());
 
-                   //set variables of 'myObject', etc.
-
-                     SharedPreferences.Editor prefsEditor = mPrefs.edit();
-                     Gson gson = new Gson();
-                     String json = gson.toJson(datum1);
-                     prefsEditor.putString("offer1_1", json);
-                     prefsEditor.commit();
-
-                 }
-                 if(response.body().getData().size()>1)
-                 {
-                     datum1=response.body().getData().get(response.body().getData().size()-1);
-                     datum2=response.body().getData().get(response.body().getData().size()-2);
-                     Glide.with(getActivity()).load("http://" + datum1.getFiles().get(0))
-                             .into(offer_two);
-                     tile_two.setText(datum1.getTitle());
-                     start_two.setText(datum1.getStartTime().split(" ")[0]);
-                     end_two.setText(datum1.getEndTime().split(" ")[0]);
-                     price_old_two.setText(datum1.getPreviousPrice().toString());
-                     price_new_two.setText(datum1.getCurrentPrice().toString());
-
-
-                     Glide.with(getActivity()).load("http://" + datum2.getFiles().get(0))
-                             .into(offer_one);
-                     title_one.setText(datum2.getTitle());
-                     start_one.setText(datum2.getStartTime().split(" ")[0]);
-                     end_one.setText(datum2.getEndTime().split(" ")[0]);
-                     pric_old_one.setText(datum2.getPreviousPrice().toString());
-                     price_new_one.setText(datum2.getCurrentPrice().toString());
-
-                     no_ffer_two.setVisibility(View.GONE);
-                     no_offer_one.setVisibility(View.GONE);
-
-
-                     SharedPreferences mPrefs  = getContext().getSharedPreferences("MY_APP", Context.MODE_PRIVATE);
-
-                     //set variables of 'myObject', etc.
-
-                     SharedPreferences.Editor prefsEditor = mPrefs.edit();
-                     Gson gson = new Gson();
-                     String json = gson.toJson(datum1);
-                     prefsEditor.putString("offer1", json);
-
-                     Gson gson1 = new Gson();
-                     String json1 = gson1.toJson(datum2);
-                     prefsEditor.putString("offer2", json1);
-                     prefsEditor.commit();
-
-
-                 }
+                            Glide.with(getActivity()).load("http://" + datum2.getFiles().get(0))
+                                    .into(offer_one);
+                            title_one.setText(datum2.getTitle());
+                            start_one.setText(datum2.getStartTime().split(" ")[0]);
+                            end_one.setText(datum2.getEndTime().split(" ")[0]);
+                            pric_old_one.setText(datum2.getPreviousPrice().toString());
+                            price_new_one.setText(datum2.getCurrentPrice().toString());
+                            no_ffer_two.setVisibility(View.GONE);
+                            no_offer_one.setVisibility(View.GONE);
+                        }
+                    }
                 }
-
-            }
-
-            @Override
-            public void onFailure(Call<AllOffer> call, Throwable t) {
-
-            }
-        });
-
+                @Override
+                public void onFailure(Call<AllOffer> call, Throwable t) {
+                }
+            });
 
 return  numbercheck;
     }
@@ -275,12 +259,10 @@ return  numbercheck;
 //        }
 //        adapter.renewItems(sliderItemList);
 //    }
-
     public void removeLastItem(View view) {
         if (adapter.getCount() - 1 >= 0)
             adapter.deleteItem(adapter.getCount() - 1);
     }
-
     public void addNewItem(View view) {
         SliderItem sliderItem = new SliderItem();
         List<SliderItem> sliderItemList = new ArrayList<>();
@@ -293,7 +275,7 @@ return  numbercheck;
         sliderItemList.add(sliderItem1);
         SliderItem sliderItem2 = new SliderItem();
         sliderItem2.setDescription("City lab");
-        sliderItem2.setImageUrl(R.drawable.citylabtwo);
+        sliderItem2.setImageUrl(R.drawable.headerhome);
         sliderItemList.add(sliderItem2);
         adapter.renewItems(sliderItemList);
     }

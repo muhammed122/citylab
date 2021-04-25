@@ -6,8 +6,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#f4f4f9"
     android:orientation="vertical"
-    tools:context=".fragemnt.Wight_Fragment"
-    android:weightSum="3.9">
+    tools:context=".activity.Wight_acticty"
+    android:weightSum="4">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -38,7 +38,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/backfrom_reservation_to_home"
+                android:id="@+id/backfrom_wight_to_home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:scaleType="fitXY"
@@ -76,12 +76,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:layout_marginTop="15dp"
                 android:layout_marginRight="30sp"
                 android:fontFamily="@font/cairo_semibold"
                 android:text="طولك"
                 android:textColor="#2e3094"
-                android:textSize="18sp" />
+                android:textSize="13sp" />
 
             <EditText
                 android:id="@+id/high_in_wight_leve"
@@ -89,15 +88,17 @@
                 android:layout_height="35dp"
                 android:layout_gravity="center|top"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/signup_bordershape"
                 android:fontFamily="@font/cairo_semibold"
                 android:hint="الطول"
+                android:paddingRight="@dimen/_5sdp"
+
                 android:inputType="number"
-                android:paddingRight="25dp"
+                android:gravity="center"
                 android:textColor="#2e3094"
                 android:textColorHint="#2e3094"
-                android:textSize="18sp" />
+                android:textSize="13sp" />
 
         </LinearLayout>
 
@@ -114,46 +115,42 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-
                 android:layout_weight="1"
                 android:fontFamily="@font/cairo_semibold"
                 android:gravity="center|right|bottom"
                 android:paddingRight="15dp"
                 android:text="العمر"
                 android:textColor="#2e3094"
-                android:textSize="18sp" />
+                android:textSize="13sp" />
 
             <EditText
                 android:id="@+id/age_in_wight_leve"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/signup_bordershape"
                 android:fontFamily="@font/cairo_semibold"
                 android:hint="عمرك"
-                android:paddingRight="15dp"
+                android:gravity="center"
                 android:textColor="#2e3094"
                 android:textColorHint="#2e3094"
-                android:textSize="18sp" />
+                android:textSize="13sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-
                 android:layout_weight="1"
                 android:fontFamily="@font/cairo_semibold"
                 android:gravity="center|right|bottom"
                 android:paddingRight="15dp"
                 android:text="الوزن"
                 android:textColor="#2e3094"
-                android:textSize="18sp" />
+                android:textSize="13sp" />
 
             <EditText
                 android:id="@+id/wight_in_wight_leve"
@@ -167,7 +164,8 @@
                 android:background="@drawable/signup_bordershape"
                 android:fontFamily="@font/cairo_semibold"
                 android:hint="؟"
-                android:paddingRight="15dp"
+                android:gravity="center"
+
                 android:textColor="#2e3094"
                 android:textColorHint="#2e3094"
                 android:textSize="18sp" />
@@ -193,7 +191,7 @@
             android:fontFamily="@font/cairo_semibold"
             android:gravity="center"
             android:text="أرسال"
-            android:textSize="15sp"
+            android:textSize="13sp"
 
             />
 
@@ -206,7 +204,7 @@
             android:text="تعليمات"
             android:paddingRight="@dimen/_15sdp"
             android:textColor="#2e3094"
-            android:textSize="18sp" />
+            android:textSize="13sp" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView_wight"
@@ -232,6 +230,8 @@
                 android:background="#FFF"
                 android:fontFamily="@font/cairo_semibold"
                 android:textColor="#2e3094"
+                android:gravity="right"
+
                 android:textSize="15sp" />
 
 
