@@ -56,12 +56,12 @@
                 tools:text="سجل الآن" />
 
             <TextView
-                android:id="@+id/signupfromlogin"
+                android:id="@+id/Loginfromsignup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/cairo_semibold"
                 android:lineSpacingExtra="-1sp"
-                android:text=" لديك حساب شخصى؟"
+                android:text="ليس لديك حساب شخصى؟"
                 android:textColor="#6895F8"
                 android:textSize="9sp"
                 android:textStyle="normal"
@@ -77,16 +77,16 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/cairo_semibold"
                 android:lineSpacingMultiplier="0.89"
+                android:text="تسجل الدخول"
                 android:textColor="#000163"
                 android:textSize="9sp"
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.413"
+                app:layout_constraintHorizontal_bias="0.412"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView2"
-                app:layout_constraintVertical_bias="0.031"
-                android:text="تسجل الدخول" />
+                app:layout_constraintVertical_bias="0.018" />
 
             <EditText
                 android:id="@+id/edittext_phon_number_for_login"
@@ -109,7 +109,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.476"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/signupfromlogin"
+                app:layout_constraintTop_toBottomOf="@+id/Loginfromsignup"
                 app:layout_constraintVertical_bias="0.131"
                 android:hint="رقم الهاتف"
 

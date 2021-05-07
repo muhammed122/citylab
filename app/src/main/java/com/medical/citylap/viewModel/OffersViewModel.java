@@ -24,11 +24,12 @@ public class OffersViewModel extends ViewModel {
         RetrofitClint.getInstance().getoffer().enqueue(new Callback<AllOffer>() {
             @Override
             public void onResponse(Call<AllOffer> call, Response<AllOffer> response) {
-                allOfferMediatorLiveData.setValue(response.body());
-              //  Log.e("offerfragment", "onResponse: "+response.body().getData() );
-              //  Log.d("offerfragment", "onResponse: "+response.body(). getData().get(0).getTitle());
-               // Log.v("offerfragment", "onResponse: "+response.body().getMessage());
-
+                if(response.isSuccessful()) {
+                    allOfferMediatorLiveData.setValue(response.body());
+                    //  Log.e("offerfragment", "onResponse: "+response.body().getData() );
+                    //  Log.d("offerfragment", "onResponse: "+response.body(). getData().get(0).getTitle());
+                    // Log.v("offerfragment", "onResponse: "+response.body().getMessage());
+                }
             }
 
             @Override

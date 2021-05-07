@@ -464,20 +464,20 @@ android:weightSum="3.5">
         android:orientation="horizontal"
         android:gravity="center"
         >
+
         <Button
             android:id="@+id/upload_image_booking_id"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="3dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="25dp"
             android:layout_weight="1"
+            android:background="@drawable/shapbutton"
             android:fontFamily="@font/cairo_semibold"
-            android:textStyle="normal"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
             android:lineSpacingExtra="15sp"
             android:text="تحميل "
-            android:layout_marginLeft="25dp"
-            android:background="@drawable/shapbutton"
-            />
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            android:textStyle="normal" />
         <TextView
             android:id="@+id/text_imag_reservation"
             android:layout_width="0dp"
@@ -507,7 +507,7 @@ android:weightSum="3.5">
         android:id="@+id/submet_id_booking"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_30sdp"
         android:textColor="#FFFF"
         android:background="@drawable/shapbutton"
         android:text="أرسل"

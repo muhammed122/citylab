@@ -36,8 +36,7 @@ finish();
         show_information.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(Age.getText().toString().equals("") && suger.getText().toString().equals("") && wight.getText().toString().equals(""))
-                {
+
                     Toast.makeText(Suger_activity.this, "برجاء ادخال جميع البيانات", Toast.LENGTH_SHORT).show();
                     if(Age.getText().toString().equals(""))
                     {
@@ -51,7 +50,7 @@ finish();
                     {
                         suger. setError("!");
                     }
-                }
+
                 if(! Age.getText().toString().equals("")&& !suger.getText().toString().equals("")&& !wight.getText().toString().equals(""))
                 {
                     cardView.setVisibility(View.VISIBLE);

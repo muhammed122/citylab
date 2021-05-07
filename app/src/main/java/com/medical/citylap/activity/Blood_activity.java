@@ -35,8 +35,7 @@ public class Blood_activity extends AppCompatActivity {
         show_information.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             if(Age.getText().toString().equals("") && blood.getText().toString().equals("") && wight.getText().toString().equals(""))
-             {
+
                  Toast.makeText(Blood_activity.this, "برجاء ادخال جميع البيانات", Toast.LENGTH_SHORT).show();
                  if(Age.getText().toString().equals(""))
                  {
@@ -50,7 +49,7 @@ public class Blood_activity extends AppCompatActivity {
                  {
                      blood. setError("!");
                  }
-             }
+
              if(!Age.getText().toString().equals("")&&! blood.getText().toString().equals("")&& !wight.getText() .toString().equals(""))
             {
                 cardView.setVisibility(View.VISIBLE);

@@ -27,7 +27,6 @@ import com.medical.citylap.RetrofitClint;
 import com.medical.citylap.activity.SplashScreen;
 import com.medical.citylap.helperfunction.Utile;
 import com.medical.citylap.modles.Loginmodle;
-import com.medical.citylap.modles.Signup;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -116,7 +115,7 @@ public class LoginFragment extends Fragment {
 
         password =view.findViewById(R.id.edittext_phon_number_for_login);
         loButton = view.findViewById(R.id.button_login_id);
-        textView_sign_up=view.findViewById(R.id.signupfromlogin);
+        textView_sign_up=view.findViewById(R.id.Loginfromsignup);
         progressBar=view.findViewById(R.id.progresslogin);
 
     }

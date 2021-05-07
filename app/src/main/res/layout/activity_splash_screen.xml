@@ -22,7 +22,7 @@ tools:context=".activity.SplashScreen"
     app:layout_constraintVertical_bias="0.499" />
 
 <TextView
-    android:id="@+id/textView3"
+    android:id="@+id/textView3_spalsh"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginBottom="36dp"
@@ -48,7 +48,7 @@ tools:context=".activity.SplashScreen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView3_spalsh"
         app:layout_constraintVertical_bias="0.0" />
 
     <ProgressBar

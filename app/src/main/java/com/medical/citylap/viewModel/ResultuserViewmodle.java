@@ -30,11 +30,12 @@ public class ResultuserViewmodle extends ViewModel {
        RetrofitClint.getInstance().getResults("Bearer "+token).enqueue(new Callback<ResultApi>() {
            @Override
            public void onResponse(Call<ResultApi> call, Response<ResultApi> response) {
-               if(response.body().getData() !=null)
-               resultmutbel.setValue(response.body());
-               //Log.d(TAG, "onResponse: "+response.body().getStatus());
+               if (response.isSuccessful()) {
+                   if (response.body().getData() != null)
+                       resultmutbel.setValue(response.body());
+                   //Log.d(TAG, "onResponse: "+response.body().getStatus());
+               }
            }
-
            @Override
            public void onFailure(Call<ResultApi> call, Throwable t) {
 

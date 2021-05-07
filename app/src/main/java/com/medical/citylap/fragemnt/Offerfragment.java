@@ -65,7 +65,7 @@ ProgressBar progressBar;
             offersViewModel.getAllOffer().observe(getViewLifecycleOwner(), new Observer<AllOffer>() {
                 @Override
                 public void onChanged(AllOffer allOffers) {
-                    Log.d(TAG, "onChanged: "+allOffers.getData().size());
+//                    Log.d(TAG, "onChanged: "+allOffers.getData().size());
                     offerAdapter.setlist((ArrayList<Datum>) allOffers.getData());
                     mRecyclerView.setAdapter(offerAdapter);
                     progressBar.setVisibility(View.GONE);
@@ -110,7 +110,7 @@ ProgressBar progressBar;
         ivView=view.findViewById(R.id.imagebutton_back_from_offer_to_home);
         tvView=view.findViewById(R.id.nointerntid);
         imgview=view.findViewById(R.id.imageView2_no);
-progressBar=view.findViewById(R.id.prograbaroffer);
+        progressBar=view.findViewById(R.id.prograbaroffer);
 
 
     }

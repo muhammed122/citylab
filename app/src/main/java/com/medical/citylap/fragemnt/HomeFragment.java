@@ -25,6 +25,7 @@ import com.medical.citylap.Adapter.SliderAdapterExample;
 import com.medical.citylap.R;
 import com.medical.citylap.MyPreference;
 import com.medical.citylap.RetrofitClint;
+import com.medical.citylap.activity.AboutUS;
 import com.medical.citylap.activity.Blood_activity;
 import com.medical.citylap.activity.BookingScreen;
 import com.medical.citylap.activity.ResultActivty;
@@ -52,7 +53,7 @@ import static android.content.ContentValues.TAG;
 
 public class HomeFragment extends Fragment {
     Button result,booking,aboutus,seealloffer,suger,prusioer,perfectwight;
-    ImageView offer_one,offer_two;
+    ImageView offer_one,offer_two,public_advice;
     TextView title_one,tile_two,start_one,start_two,end_one,end_two,pric_old_one,price_old_two,price_new_one,price_new_two,no_offer_one,no_ffer_two;
     Datum datum1;
     Datum datum2;
@@ -84,20 +85,12 @@ public static Fragment fragment=new Offerfragment();
         sliderView.setScrollTimeInSec(3);
         sliderView.setAutoCycle(true);
         sliderView.startAutoCycle();
-        sliderView.setOnIndicatorClickListener(new DrawController.ClickListener() {
-            @Override
-            public void onIndicatorClicked(int position) {
-                Toast.makeText(getContext(), ""+sliderView.getCurrentPagePosition(), Toast.LENGTH_SHORT).show();
-            }
-        });
+
         addNewItem( view);
         seealloffer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-          //      Toast.makeText(getContext(),
-                   //     "User Login Status: " + MyPreference.getSharedString("token"),
-                   //     Toast.LENGTH_LONG).show();
 
               final FragmentTransaction ft = getFragmentManager().beginTransaction();
               ft.replace(R.id.fragment_container, new Offerfragment(), "NewFragmentTag");
@@ -165,7 +158,18 @@ public static Fragment fragment=new Offerfragment();
                 startActivity(new Intent(getActivity(), Blood_activity.class));
             }
         });
-
+        aboutus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), AboutUS.class));
+            }
+        });
+        public_advice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "التحديث القادم", Toast.LENGTH_SHORT).show();
+            }
+        });
      return view;
     }
     public void intilazation(View view)
@@ -194,46 +198,47 @@ public static Fragment fragment=new Offerfragment();
         no_ffer_two=view.findViewById(R.id.text_two);
         no_offer_one=view.findViewById(R.id.text_one);
         sliderView = view.findViewById(R.id.imageSlider);
+        public_advice=view.findViewById(R.id.next_updat_home);
     }
     public int setnewoffers()
     {
-
             RetrofitClint.getInstance().getoffer().enqueue(new Callback<AllOffer>() {
                 @Override
                 public void onResponse(Call<AllOffer> call, Response<AllOffer> response) {
+                    if (response.isSuccessful()) {
+                        if (response.body().getData().size() > 0) {
+                            if (response.body().getData().size() == 1) {
+                                datum1 = response.body().getData().get(response.body().getData().size() - 1);
+                                Glide.with(getActivity()).load("http://" + datum1.getFiles().get(0))
+                                        .into(offer_two);
+                                tile_two.setText(datum1.getTitle());
+                                start_two.setText(datum1.getStartTime().split(" ")[0]);
+                                end_two.setText(datum1.getEndTime().split(" ")[0]);
+                                price_old_two.setText(datum1.getPreviousPrice().toString());
+                                price_new_two.setText(datum1.getCurrentPrice().toString());
+                                no_ffer_two.setVisibility(View.GONE);
+                            }
+                            if (response.body().getData().size() > 1) {
+                                datum1 = response.body().getData().get(response.body().getData().size() - 1);
+                                datum2 = response.body().getData().get(response.body().getData().size() - 2);
+                                Glide.with(getActivity()).load("http://" + datum1.getFiles().get(0))
+                                        .into(offer_two);
+                                tile_two.setText(datum1.getTitle());
+                                start_two.setText(datum1.getStartTime().split(" ")[0]);
+                                end_two.setText(datum1.getEndTime().split(" ")[0]);
+                                price_old_two.setText(datum1.getPreviousPrice().toString());
+                                price_new_two.setText(datum1.getCurrentPrice().toString());
 
-                    if (response.body().getData().size() > 0) {
-                        if (response.body().getData().size() == 1) {
-                            datum1 = response.body().getData().get(response.body().getData().size() - 1);
-                            Glide.with(getActivity()).load("http://" + datum1.getFiles().get(0))
-                                    .into(offer_two);
-                            tile_two.setText(datum1.getTitle());
-                            start_two.setText(datum1.getStartTime().split(" ")[0]);
-                            end_two.setText(datum1.getEndTime().split(" ")[0]);
-                            price_old_two.setText(datum1.getPreviousPrice().toString());
-                            price_new_two.setText(datum1.getCurrentPrice().toString());
-                            no_ffer_two.setVisibility(View.GONE);
-                        }
-                        if (response.body().getData().size() > 1) {
-                            datum1 = response.body().getData().get(response.body().getData().size() - 1);
-                            datum2 = response.body().getData().get(response.body().getData().size() - 2);
-                            Glide.with(getActivity()).load("http://" + datum1.getFiles().get(0))
-                                    .into(offer_two);
-                            tile_two.setText(datum1.getTitle());
-                            start_two.setText(datum1.getStartTime().split(" ")[0]);
-                            end_two.setText(datum1.getEndTime().split(" ")[0]);
-                            price_old_two.setText(datum1.getPreviousPrice().toString());
-                            price_new_two.setText(datum1.getCurrentPrice().toString());
-
-                            Glide.with(getActivity()).load("http://" + datum2.getFiles().get(0))
-                                    .into(offer_one);
-                            title_one.setText(datum2.getTitle());
-                            start_one.setText(datum2.getStartTime().split(" ")[0]);
-                            end_one.setText(datum2.getEndTime().split(" ")[0]);
-                            pric_old_one.setText(datum2.getPreviousPrice().toString());
-                            price_new_one.setText(datum2.getCurrentPrice().toString());
-                            no_ffer_two.setVisibility(View.GONE);
-                            no_offer_one.setVisibility(View.GONE);
+                                Glide.with(getActivity()).load("http://" + datum2.getFiles().get(0))
+                                        .into(offer_one);
+                                title_one.setText(datum2.getTitle());
+                                start_one.setText(datum2.getStartTime().split(" ")[0]);
+                                end_one.setText(datum2.getEndTime().split(" ")[0]);
+                                pric_old_one.setText(datum2.getPreviousPrice().toString());
+                                price_new_one.setText(datum2.getCurrentPrice().toString());
+                                no_ffer_two.setVisibility(View.GONE);
+                                no_offer_one.setVisibility(View.GONE);
+                            }
                         }
                     }
                 }
@@ -241,27 +246,7 @@ public static Fragment fragment=new Offerfragment();
                 public void onFailure(Call<AllOffer> call, Throwable t) {
                 }
             });
-
 return  numbercheck;
-    }
-//    public void renewItems(View view) {
-//        List<SliderItem> sliderItemList = new ArrayList<>();
-//        //dummy data
-//        for (int i = 0; i < 5; i++) {
-//            SliderItem sliderItem = new SliderItem();
-//            sliderItem.setDescription("Slider Item " + i);
-//            if (i % 2 == 0) {
-//                sliderItem.setImageUrl("https://images.pexels.com/photos/929778/pexels-photo-929778.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
-//            } else {
-//                sliderItem.setImageUrl("https://images.pexels.com/photos/747964/pexels-photo-747964.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260");
-//            }
-//            sliderItemList.add(sliderItem);
-//        }
-//        adapter.renewItems(sliderItemList);
-//    }
-    public void removeLastItem(View view) {
-        if (adapter.getCount() - 1 >= 0)
-            adapter.deleteItem(adapter.getCount() - 1);
     }
     public void addNewItem(View view) {
         SliderItem sliderItem = new SliderItem();

@@ -20,7 +20,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/Theme.CityLap"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.Assignemt"></activity>
+
+        <activity android:name=".activity.AboutUS" />
         <activity android:name=".activity.Blood_activity" />
         <activity android:name=".activity.Wight_acticty" />
         <activity android:name=".activity.Suger_activity" />

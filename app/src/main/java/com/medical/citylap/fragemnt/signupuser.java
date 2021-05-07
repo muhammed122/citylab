@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.medical.citylap.R;
@@ -33,6 +34,7 @@ public class signupuser extends Fragment {
     public String pass=null;
     EditText password,name;
     Button loButton;
+    TextView textView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -71,12 +73,7 @@ public class signupuser extends Fragment {
                 final FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.replace(R.id.fragment_container, new Profilefragment(), "NewFragmentTag");
                 ft.commit();
-
-
-}
-
-
-
+                }
                        }
                    }
 
@@ -87,6 +84,14 @@ public class signupuser extends Fragment {
                });
                 }
         });
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.fragment_container, new LoginFragment(), "NewFragmentTag");
+                ft.commit();
+            }
+        });
 return view;
     }
 
@@ -96,6 +101,6 @@ return view;
         password =view.findViewById(R.id.editText_phon_number_sign_in_id);
         name=view.findViewById(R.id.editText_name_sign_in_id);
         loButton = view.findViewById(R.id.button_login_id);
-
+        textView=view.findViewById(R.id.Loginfromsignup);
     }
 }

@@ -63,7 +63,13 @@
                     />
 
 
-
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#000"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    />
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardView2"
                     android:layout_width="match_parent"
@@ -71,7 +77,6 @@
                     android:backgroundTint="#E0E1EA"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageView"
                     app:layout_constraintVertical_bias="0.0">
@@ -110,7 +115,7 @@
                                 android:layout_marginTop="5dp"
                                 android:layout_marginBottom="10dp"
                                 android:layout_weight="0.9"
-                                android:background="@drawable/borderhomebutton"
+                                android:background="@drawable/borderwhite"
                                 android:fontFamily="@font/cairo_semibold"
                                 android:gravity="center"
                                 android:text=" نتائج التحاليل"
@@ -126,7 +131,7 @@
                                 android:layout_height="0dp"
                                 android:layout_marginBottom="10dp"
                                 android:layout_weight="0.9"
-                                android:background="@drawable/borderhomebutton"
+                                android:background="@drawable/borderwhite"
                                 android:fontFamily="@font/cairo_semibold"
                                 android:gravity="center"
                                 android:text="حجز تحاليل"
@@ -140,7 +145,7 @@
                                 android:layout_width="130dp"
                                 android:layout_height="0dp"
                                 android:layout_weight="0.9"
-                                android:background="@drawable/borderhomebutton"
+                                android:background="@drawable/borderwhite"
                                 android:fontFamily="@font/cairo_semibold"
                                 android:gravity="center"
                                 android:text=" نبذه عنا"
@@ -161,7 +166,13 @@
 
                 </androidx.cardview.widget.CardView>
 
-
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#000"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    />
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="170dp"
@@ -267,7 +278,13 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </androidx.cardview.widget.CardView>
-
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#000"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -583,7 +600,13 @@
                         </androidx.cardview.widget.CardView>
 
                     </LinearLayout>
-
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="#000"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        />
                 </LinearLayout>
 
 
@@ -595,13 +618,20 @@
                     android:gravity="top">
 
                     <ImageView
+                        android:id="@+id/next_updat_home"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="10dp"
                         android:src="@drawable/advice" />
 
                 </LinearLayout>
-
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#000"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    />
             </LinearLayout>
 
 

@@ -14,6 +14,7 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.medical.citylap.R;
 import com.medical.citylap.RetrofitClint;
@@ -24,11 +25,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SplashScreen extends AppCompatActivity {
-    Handler handler;
-    private ProgressBar progressBar;
-    private static int SPLASH_SCREEN_TIME_OUT = 4000;
-    Animation anim;
-    ImageView imageView;
+
+    private static int SPLASH_SCREEN_TIME_OUT = 3000;
+
 
     public static String token_user;
     @Override
@@ -39,9 +38,17 @@ public class SplashScreen extends AppCompatActivity {
         animation.setInterpolator(new LinearInterpolator());
         animation.setRepeatCount(Animation.INFINITE);
         animation.setDuration(2000);
+
+
+        Animation animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.side_slide);
+        animation2.setInterpolator(new LinearInterpolator());
+        animation2.setRepeatCount(Animation.INFINITE);
+        animation2.setDuration(2000);
+
+        final TextView textView=findViewById(R.id.textView3_spalsh);
         final ImageView splash = findViewById(R.id.imagelogogsplash);
         splash.startAnimation(animation);
-        progressBar = findViewById(R.id.prograsssplash);
+        textView.startAnimation(animation2);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -58,9 +65,7 @@ public class SplashScreen extends AppCompatActivity {
                                 Log.d("TAG", "onResponse: " + response.body().getMessage() + retrivedToken);
                                 token_user = response.body().getData().getToken();
                             }
-
                         }
-
                         @Override
                         public void onFailure(Call<Loginmodle> call, Throwable t) {
 

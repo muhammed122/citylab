@@ -137,6 +137,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="5dp"
                     android:gravity="center"
+                    android:inputType="number"
 
                     android:layout_weight="1.1"
                     android:background="@drawable/signup_bordershape"
@@ -171,6 +172,8 @@
                     android:background="@drawable/signup_bordershape"
                     android:fontFamily="@font/cairo_semibold"
                     android:hint="؟"
+                    android:inputType="number"
+
                     android:textColor="#2e3094"
                     android:textColorHint="#2e3094"
                     android:textSize="13sp" />

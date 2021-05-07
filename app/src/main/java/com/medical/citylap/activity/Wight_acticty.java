@@ -35,8 +35,7 @@ public class Wight_acticty extends AppCompatActivity {
         show_information.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(Age.getText().toString().equals("") && wight.getText().toString().equals("") && hige.getText().toString().equals(""))
-                {
+
                    if(Age.getText().toString().equals(""))
                    {
                     Age.setError("!");
@@ -51,7 +50,7 @@ public class Wight_acticty extends AppCompatActivity {
                     }
                     Toast.makeText(Wight_acticty.this, "برجاء ادخال جميع البيانات", Toast.LENGTH_SHORT).show();
 
-                }
+
                 if(! Age.getText().toString().equals("")&& !wight.getText().toString().equals("")&& !wight.getText().toString().equals(""))
                 {
                     cardView.setVisibility(View.VISIBLE);

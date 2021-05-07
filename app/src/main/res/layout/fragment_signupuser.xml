@@ -65,7 +65,7 @@
                 android:text="سجل الآن" />
 
             <TextView
-                android:id="@+id/signupfromlogin"
+                android:id="@+id/Loginfromsignup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/cairo_semibold"
@@ -93,7 +93,7 @@
                 android:textSize="9sp"
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/signupfromlogin"
+                app:layout_constraintEnd_toStartOf="@+id/Loginfromsignup"
                 app:layout_constraintHorizontal_bias="0.945"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

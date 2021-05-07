@@ -2,18 +2,30 @@ package com.medical.citylap.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.provider.ContactsContract;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.medical.citylap.R;
+import com.medical.citylap.base.BaseFragment;
 import com.medical.citylap.fragemnt.Fragment_map;
 import com.medical.citylap.fragemnt.HomeFragment;
 import com.medical.citylap.fragemnt.LoginFragment;
@@ -21,12 +33,8 @@ import com.medical.citylap.fragemnt.MapsFragment;
 import com.medical.citylap.fragemnt.Profilefragment;
 
 public class Home extends AppCompatActivity {
-    private BottomNavigationView bottomNavigationView;
-    MeowBottomNavigation bottomNavigation;
-    public static boolean hom=true;
-    Context context;
-    private final static String TAG_FRAGMENT = "TAG_FRAGMENT";
 
+    boolean doubleBackToExitPressedOnce = false;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -35,37 +43,30 @@ public class Home extends AppCompatActivity {
             Fragment fragment;
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    fragment=new HomeFragment();
+                    fragment = new HomeFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_location:
 
-                    startActivity(new Intent(Home.this,Mooglmap.class));
+                    startActivity(new Intent(Home.this, Mooglmap.class));
                     //fragment=new Fragment_map();
-                   // loadFragment(fragment);
+                    // loadFragment(fragment);
                     return true;
                 case R.id.navigation_chat:
-                    hom=false;
+
                     ////start whats app
 
-                    String contact = "+02 01121308294"; // use country code with your phone number
-                    String url = "https://api.whatsapp.com/send?phone="+contact;
-                    Intent i = new Intent(Intent.ACTION_VIEW);
-                    i.setData(Uri.parse(url));
-                    startActivity(i);
-                    return true;
-                case  R.id.navigation_profil:
-                    hom=false;
-                    if( checkuserlogin()==null)
-                    {
-                        //open login screen
-                        fragment=new LoginFragment();
-                        loadFragment(fragment);
-                    }
+                    whatsapp();
 
-                    else
-                    {
-                        fragment=new Profilefragment();
+                    return true;
+                case R.id.navigation_profil:
+
+                    if (checkuserlogin() == null) {
+                        //open login screen
+                        fragment = new LoginFragment();
+                        loadFragment(fragment);
+                    } else {
+                        fragment = new Profilefragment();
                         loadFragment(fragment);
 
                     }
@@ -75,114 +76,63 @@ public class Home extends AppCompatActivity {
             return false;
         }
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-            Fragment fragment;
-            fragment=new HomeFragment();
-            loadFragment(fragment);
-
-        BottomNavigationView navigation =  findViewById(R.id.bottomNavigationView);
+        Fragment fragment;
+        fragment = new HomeFragment();
+        loadFragment(fragment);
+        BottomNavigationView navigation = findViewById(R.id.bottomNavigationView);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-//        bottomNavigation=findViewById(R.id.bottomNavigationView);
-//        bottomNavigation.add(new MeowBottomNavigation.Model(1, R.drawable.homeblue));
-//        bottomNavigation.add(new MeowBottomNavigation.Model(2, R.drawable.ic_baseline_location_on_24));
-//        bottomNavigation.add(new MeowBottomNavigation.Model(3, R.drawable.ic_baseline_chat_24));
-//        bottomNavigation.add(new MeowBottomNavigation.Model(4, R.drawable.ic_baseline_person_24));
-//        bottomNavigation.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
-//            @Override
-//            public void onClickItem(MeowBottomNavigation.Model item) {
-//                // your codes
-//
-//                Fragment fragment;
-//                switch (item.getId()) {
-//                    case 1:
-//                        fragment=new HomeFragment();
-//                        loadFragment(fragment);
-//
-//                    case 2:
-//
-//                        startActivity(new Intent(Home.this,Mooglmap.class));
-//                        //fragment=new Fragment_map();
-//                        // loadFragment(fragment);
-//
-//                    case 3:
-//                        hom=false;
-//                        ////start whats app
-//
-//                        String contact = "+02 01121308294"; // use country code with your phone number
-//                        String url = "https://api.whatsapp.com/send?phone="+contact;
-//                        Intent i = new Intent(Intent.ACTION_VIEW);
-//                        i.setData(Uri.parse(url));
-//                        startActivity(i);
-//
-//                    case  4:
-//
-//                        if( checkuserlogin()==null)
-//                        {
-//                            //open login screen
-//                            fragment=new LoginFragment();
-//                            loadFragment(fragment);
-//                        }
-//
-//                        else
-//                        {
-//                            fragment=new Profilefragment();
-//                            loadFragment(fragment);
-//
-//                        }
-//
-//                    default:
-//
-//
-//
-//                }
-//            }
-//        });
-//
-//        bottomNavigation.setOnShowListener(new MeowBottomNavigation.ShowListener() {
-//            @Override
-//            public void onShowItem(MeowBottomNavigation.Model item) {
-//                // your codes
-//            }
-//        });
-//
-//        bottomNavigation.setOnReselectListener(new MeowBottomNavigation.ReselectListener() {
-//            @Override
-//            public void onReselectItem(MeowBottomNavigation.Model item) {
-//                // your codes
-//            }
-//        });
     }
+
     private boolean loadFragment(Fragment fragment) {
         //switching fragment
         if (fragment != null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fragment_container, fragment).addToBackStack( "tag" )
+                    .replace(R.id.fragment_container, fragment).addToBackStack("tag")
                     .commit();
             return true;
         }
         return false;
     }
-    public String checkuserlogin()
-    {
-        String id=null;
-        SharedPreferences preferences = this.getSharedPreferences("MY_APP",Context.MODE_PRIVATE);
-        String retrivedToken  = preferences.getString("phonenumberuser",null);//second parameter default value.
+
+    public String checkuserlogin() {
+        String id = null;
+        SharedPreferences preferences = this.getSharedPreferences("MY_APP", Context.MODE_PRIVATE);
+        String retrivedToken = preferences.getString("phonenumberuser", null);//second parameter default value.
         return retrivedToken;
     }
     @Override
     public void onBackPressed() {
-        if (getFragmentManager().getBackStackEntryCount() > 0) {
-            getFragmentManager().popBackStack();
-        } else {
+        if (doubleBackToExitPressedOnce) {
             super.onBackPressed();
-        }
-    }
 
+            System.exit(1);
+            finish();
+            return;
+        }
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 2000);
+    }
+    public void whatsapp() {
+        String contact = "+02 "+"01062436363"; // use country code with your phone number
+        String url = "https://api.whatsapp.com/send?phone=" + contact;
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(url));
+        startActivity(i);
+
+    }
 }
+
 

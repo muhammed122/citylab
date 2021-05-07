@@ -24,6 +24,12 @@ import okhttp3.RequestBody;
 
 public class BaseFragment extends Fragment {
 
+
+
+
+
+
+
     private static final String TAG = "BaseFragment";
     public static final int REQUEST_CAMERA_CODE = 101;
     public static final int REQUEST_GALLERY_CODE = 102;

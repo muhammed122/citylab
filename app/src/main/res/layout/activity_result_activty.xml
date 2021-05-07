@@ -51,9 +51,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     </androidx.cardview.widget.CardView>
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -67,7 +65,6 @@
         app:layout_constraintVertical_bias="0.0"
         >
 
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_result"
             android:layout_width="match_parent"
@@ -77,7 +74,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
         <ProgressBar
             android:id="@+id/prograbarresult"
@@ -90,7 +86,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.499"
-            android:visibility="gone"
             />
 
 

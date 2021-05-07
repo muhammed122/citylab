@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -53,7 +54,7 @@ public class ResultActivty extends AppCompatActivity {
 
         if (isConnected()) {
             //LoadingDialog.showDialog(this);
-            progressBar.setVisibility(View.VISIBLE);
+            LoadingDialog.showDialog(ResultActivty.this);
             mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
             adapterResult=new AdapterResult(this);
             resultuserViewmodle= ViewModelProviders.of(this).get(ResultuserViewmodle.class);
@@ -77,6 +78,7 @@ public class ResultActivty extends AppCompatActivity {
                     }
                 }
             });
+            LoadingDialog.hideDialog();
             progressBar.setVisibility(View.GONE);
         }
         else {

@@ -72,9 +72,8 @@ public void getdata()
     SharedPreferences preferences3 = getContext().getSharedPreferences("MY_APP", Context.MODE_PRIVATE);
     String retrivedphonenumber_profil  = preferences3.getString("phonenumberuserprofil",null);
     String retrivedname_user  = preferences3.getString("nameuserprofile",null);
-    String retrivedphonenumber = preferences3.getString("phonenumberuser", null);//second parameter default value.
+    String retrivedphonenumber = preferences3.getString("phonenumberuser", null);
 
-   // Log.d(TAG, "getdata: "+retrivedname_user);
     if(retrivedname_user !=null)
     {
         name.setText(retrivedname_user);
@@ -83,15 +82,11 @@ public void getdata()
     }
     else {
 
-        User user = new User();
         RetrofitClint.getInstance().userlogin("01119082271").enqueue(new Callback<Loginmodle>() {
             @Override
             public void onResponse(Call<Loginmodle> call, Response<Loginmodle> response1) {
-
-               // Log.e(TAG, "onResponseprofil: " + response1.body().getData().getToken());
-               // Log.d(TAG, "getdata: "+retrivedphonenumber_profil);
                 if (response1.isSuccessful()) {
-                 //2   token = response1.body().getData().getToken();
+
                     RetrofitClint.getInstance().getalluer("Bearer " + response1.body().getData().getToken()).enqueue(new Callback<UsersResponse>() {
                         @Override
                         public void onResponse(Call<UsersResponse> call, Response<UsersResponse> response2) {
@@ -99,7 +94,6 @@ public void getdata()
 
                                 SharedPreferences preferences = getContext().getSharedPreferences("MY_APP", Context.MODE_PRIVATE);
                                 String retrivedphonenumber = preferences.getString("phonenumberuser", null);//second parameter default value.
-                                Log.e(TAG, "onResponseprofil: " + response2.body().getMessage());
                               int g=0;
                                 for (int i = 0; i < response2.body().getData().size(); i++) {
                                     if (retrivedphonenumber.equals(response2.body().getData().get(i).getPhoneNumber())) {
@@ -108,26 +102,17 @@ public void getdata()
                                           g=i;
                                         break;
                                     }
-
                                 }
-
-
                                 preferences.edit().putString("phonenumberuserprofil",response2.body().getData().get(g).getPhoneNumber()).apply();
                                 preferences.edit().putString("nameuserprofile",response2.body().getData().get(g).getName()).apply();
-
                             }
                         }
-
                         @Override
                         public void onFailure(Call<UsersResponse> call, Throwable t) {
-
                         }
                     });
-
-
                 }
             }
-
             @Override
             public void onFailure(Call<Loginmodle> call, Throwable t) {
 

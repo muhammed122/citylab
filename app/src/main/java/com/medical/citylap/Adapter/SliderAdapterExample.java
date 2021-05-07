@@ -50,18 +50,9 @@ public class SliderAdapterExample  extends
 
     @Override
     public void onBindViewHolder(SliderAdapterVH viewHolder, final int position) {
-
         SliderItem sliderItem = mSliderItems.get(position);
-
         viewHolder.textViewDescription.setText(sliderItem.getDescription());
         viewHolder.imageViewBackground.setImageResource(sliderItem.getImageUrl());
-
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, "This is item in position " + position, Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     @Override

@@ -13,41 +13,30 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="0.8"
         android:orientation="vertical"
-        android:weightSum="3.5">
+        android:weightSum="3.5"
 
-
-        <ImageView
-            android:id="@+id/profilimage"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:src="@drawable/ic_user"
-            android:scaleType="fitCenter"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-
-            app:layout_constraintVertical_bias="0.692" />
+        >
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-<TextView
+
+<androidx.cardview.widget.CardView
     android:layout_width="match_parent"
     android:layout_height="0dp"
-    android:layout_weight="0.01"
-    android:background="#2e3094"
-    android:layout_marginRight="25dp"
-    android:layout_marginLeft="25dp"
-    />
-
+    android:layout_weight="1.8"
+    android:layout_gravity="center"
+    android:layout_marginLeft="@dimen/_25sdp"
+    android:layout_marginRight="@dimen/_25sdp"
+    app:cardCornerRadius="@dimen/_25sdp"
+    android:gravity="center"
+    app:layout_constraintEnd_toEndOf="parent">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent">
+
 
         <TextView
             android:id="@+id/textView7"
@@ -58,10 +47,24 @@
             android:background="#2e3094"
             app:layout_constraintBottom_toTopOf="@+id/textView5"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.925"
+            app:layout_constraintHorizontal_bias="0.7"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.831" />
+            app:layout_constraintVertical_bias="0.944" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:background="#000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.371" />
 
         <TextView
             android:id="@+id/textView8"
@@ -72,10 +75,9 @@
             android:background="#2e3094"
             app:layout_constraintBottom_toTopOf="@+id/textView10"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5"
-            app:layout_constraintVertical_bias="0.512" />
+            app:layout_constraintVertical_bias="0.675" />
 
         <TextView
             android:id="@+id/textView5"
@@ -87,11 +89,11 @@
             android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.904"
+            app:layout_constraintHorizontal_bias="0.949"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
 
-            app:layout_constraintVertical_bias="0.211" />
+            app:layout_constraintVertical_bias="0.703" />
 
         <TextView
             android:id="@+id/nameclintidprofle"
@@ -103,10 +105,10 @@
             android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.09"
+            app:layout_constraintHorizontal_bias="0.084"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView7"
-            app:layout_constraintVertical_bias="0.042" />
+            app:layout_constraintVertical_bias="0.07" />
 
         <TextView
             android:id="@+id/textView9"
@@ -118,10 +120,9 @@
             android:text=" "
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.925"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView10"
-            app:layout_constraintVertical_bias="0.047" />
+            app:layout_constraintVertical_bias="0.328" />
 
         <TextView
             android:id="@+id/textView10"
@@ -133,11 +134,10 @@
             android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.951"
+            app:layout_constraintHorizontal_bias="0.941"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.33" />
-
+            app:layout_constraintVertical_bias="0.851" />
 
         <TextView
             android:id="@+id/phonnumberclintprofile"
@@ -148,31 +148,39 @@
             android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.097"
+            app:layout_constraintHorizontal_bias="0.095"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView8"
-            app:layout_constraintVertical_bias="0.052" />
+            app:layout_constraintVertical_bias="0.234" />
 
-
-        <Button
-            android:id="@+id/lougout_button"
-            android:layout_width="140dp"
-            android:layout_height="50dp"
-            android:background="@drawable/backgroundblack"
-            android:drawableRight="@drawable/logout"
-            android:fontFamily="@font/cairo_semibold"
-            android:gravity="center"
-            android:paddingRight="5dp"
-            android:text="تسجيل الخروج"
-            android:textColor="#F31717"
-            android:textSize="15sp"
+        <ImageView
+            android:id="@+id/profilimage"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_baseline_person_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView9"
-            app:layout_constraintVertical_bias="0.581" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.151" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
+</androidx.cardview.widget.CardView>
+    <Button
+        android:id="@+id/lougout_button"
+        android:layout_width="140dp"
+        android:layout_height="45dp"
+        android:background="@drawable/backgroundblack"
+        android:drawableRight="@drawable/logout"
+        android:fontFamily="@font/cairo_semibold"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_55sdp"
+        android:paddingRight="5dp"
+        android:text="تسجيل الخروج"
+        android:textColor="#F31717"
+        android:textSize="15sp"
+        android:layout_gravity="center"
+  />
 </LinearLayout>
