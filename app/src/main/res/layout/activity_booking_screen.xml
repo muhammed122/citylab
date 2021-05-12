@@ -65,7 +65,7 @@ android:weightSum="3.5">
         android:layout_height="match_parent"
         android:layout_marginBottom="15dp"
         android:layout_weight="1"
-        android:gravity="bottom"
+        android:gravity="center"
         android:orientation="vertical"
         android:weightSum="6">
 
@@ -105,17 +105,20 @@ android:weightSum="3.5">
             android:textColor="#2e3094"
             android:textSize="15sp" />
 
-        <EditText
+        <TextView
             android:id="@+id/historyclint_booking_id"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:textDirection="rtl"
+            android:gravity="center|right"
+            android:drawableLeft="@drawable/ic_date"
             android:background="@drawable/signup_bordershape"
             android:hint="التاريخ"
-            android:paddingRight="15dp" />
+            android:paddingRight="15dp"
+
+            />
 
     </LinearLayout>
 
@@ -125,7 +128,7 @@ android:weightSum="3.5">
         android:layout_height="match_parent"
         android:layout_marginBottom="15dp"
         android:layout_weight="1"
-        android:gravity="bottom"
+        android:gravity="center"
         android:orientation="vertical"
         android:weightSum="6"
 
@@ -180,28 +183,6 @@ android:weightSum="3.5">
             android:paddingRight="15dp" />
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/cairo_semibold"
-            android:gravity="center|right|bottom"
-            android:paddingRight="25dp"
-            android:text="اليوم"
-            android:textColor="#2e3094"
-            android:textSize="15sp" />
-
-        <EditText
-            android:id="@+id/dayclint_booking_id"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:textDirection="rtl"
-            android:background="@drawable/signup_bordershape"
-            android:hint="اليوم"
-            android:paddingRight="15dp" />
     </LinearLayout>
 
 
@@ -456,6 +437,13 @@ android:weightSum="3.5">
     android:weightSum="2"
     android:gravity="center"
     >
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/prograsbarbook"
+        android:indeterminateDrawable="@drawable/progress_shape"
+        android:visibility="gone"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"

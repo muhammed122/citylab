@@ -14,6 +14,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -170,6 +173,48 @@ public static Fragment fragment=new Offerfragment();
                 Toast.makeText(getActivity(), "التحديث القادم", Toast.LENGTH_SHORT).show();
             }
         });
+
+
+
+        Animation animation12 = AnimationUtils.loadAnimation(getContext(), R.anim.side_slide);
+        animation12.setInterpolator(new LinearInterpolator());
+        animation12.setRepeatCount(Animation.INFINITE);
+        animation12.setDuration(1500);
+        result.startAnimation(animation12);
+        Animation animation13 = AnimationUtils.loadAnimation(getContext(), R.anim.side_slide);
+        animation13.setInterpolator(new LinearInterpolator());
+        animation13.setRepeatCount(Animation.INFINITE);
+        animation13.setDuration(1500);
+        booking.startAnimation(animation13);
+        Animation animation14 = AnimationUtils.loadAnimation(getContext(), R.anim.side_slide);
+        animation14.setInterpolator(new LinearInterpolator());
+        animation14.setRepeatCount(Animation.INFINITE);
+        animation14.setDuration(1500);
+        aboutus.startAnimation(animation14);
+
+
+
+
+        Animation animation1 = AnimationUtils.loadAnimation(getContext(), R.anim.side_slide);
+        animation1.setInterpolator(new LinearInterpolator());
+        animation1.setRepeatCount(Animation.INFINITE);
+        animation1.setDuration(1500);
+        suger.startAnimation(animation1);
+
+        Animation animation2 = AnimationUtils.loadAnimation(getActivity(), R.anim.side_slide);
+        animation2.setInterpolator(new LinearInterpolator());
+        animation2.setRepeatCount(Animation.INFINITE);
+        animation2.setDuration(1500);
+        perfectwight.startAnimation(animation2);
+
+
+        Animation animation3 = AnimationUtils.loadAnimation(getContext(), R.anim.side_slide);
+        animation3.setInterpolator(new LinearInterpolator());
+        animation3.setRepeatCount(Animation.INFINITE);
+        animation3.setDuration(1500);
+        prusioer.startAnimation(animation3);
+
+
      return view;
     }
     public void intilazation(View view)

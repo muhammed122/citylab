@@ -38,7 +38,24 @@ public interface API {
     @Headers("Accept:application/json")
     Call<UsersResponse> getAllUsers(@Header("Authorization") String token);
 
-    
+    @FormUrlEncoded
+    @POST("api/Reservations/reserve")
+    @Headers("Accept:application/json")
+    Call<SimpleResponse> upload_reservation(
+            @Header("Authorization") String token,
+            @Field("name")String name,
+                                       @Field("phoneNumber") String PhoneNumber,
+                                       @Field("age") String Age,
+                                       @Field("day") int Day,
+                                       @Field("reservationDate") String ReservationDate,
+                                       @Field("type") int type,
+                                       @Field("address") String Address,
+                                       @Field("buildingNo") String BuildingNo,
+                                       @Field("floorNo") String FloorNo,
+                                       @Field("appartementNo")String appnumber,
+                                       @Field("file") String File
+
+                                     );
 
 
 }

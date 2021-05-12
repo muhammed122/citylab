@@ -52,7 +52,6 @@ intil(view);
                 SharedPreferences preferences = getContext().getSharedPreferences("MY_APP", Context.MODE_PRIVATE);
                 preferences.edit().remove("phonenumberuser").commit();
                 preferences.edit().remove("nameuserprofile").commit();
-                preferences.edit().remove("phonenumberuser").commit();
                 final FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.replace(R.id.fragment_container, new LoginFragment(), "NewFragmentTag");
                 ft.commit();
@@ -70,7 +69,6 @@ public void intil(View view)
 public void getdata()
 {
     SharedPreferences preferences3 = getContext().getSharedPreferences("MY_APP", Context.MODE_PRIVATE);
-    String retrivedphonenumber_profil  = preferences3.getString("phonenumberuserprofil",null);
     String retrivedname_user  = preferences3.getString("nameuserprofile",null);
     String retrivedphonenumber = preferences3.getString("phonenumberuser", null);
 

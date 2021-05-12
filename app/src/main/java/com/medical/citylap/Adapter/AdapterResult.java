@@ -63,25 +63,26 @@ public class AdapterResult extends RecyclerView.Adapter<AdapterResult.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull AdapterResult.ViewHolder2 holder, int position) {
 
+        holder.typetest.setText(resultApi.getData().get(position).getNotes() + "");
         boolean isExpand = re.get(position).isExpand();
         holder.layout.setVisibility(isExpand ? View.VISIBLE : View.GONE);
         if (isExpand = re.get(position).isExpand() == false) {
             holder.imageViewmax.setImageResource(R.drawable.ic_baseline_add_24);
         } else {
             holder.imageViewmax.setImageResource(R.drawable.ic_baseline_minimize_24);
+            if (resultApi.getData().get(position).getMediaType() == 1) {
+                //file
+                holder.recycler.setVisibility(View.GONE);
+                holder.noimag.setVisibility(View.VISIBLE);
+            } else {
+                holder.recycler.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
+                holder.adapter = new AdapteronlyImage(mContext);
+                holder.adapter.setlist(resultApi.getData().get(position).getFiles());
+                holder.recycler.setAdapter(holder.adapter);
+            }
         }
 
-        if (resultApi.getData().get(position).getMediaType() == 1) {
-            //file
-            holder.recycler.setVisibility(View.GONE);
-            holder.noimag.setVisibility(View.VISIBLE);
-        } else {
-            holder.recycler.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
-            holder.adapter = new AdapteronlyImage(mContext);
-            holder.adapter.setlist(resultApi.getData().get(position).getFiles());
-            holder.recycler.setAdapter(holder.adapter);
-        }
-        holder.typetest.setText(resultApi.getData().get(position).getNotes() + "");
+
 
 
     }
@@ -118,8 +119,7 @@ public class AdapterResult extends RecyclerView.Adapter<AdapterResult.ViewHolder
                         final Dialog dialog = new Dialog(mContext);
                         dialog.setContentView(R.layout.custom_web_view);
                         WebView webView = dialog.findViewById(R.id.webview);
-
-
+                        ImageView imageView_=dialog.findViewById(R.id.exist);
                               // Include dialog.xml file
                         final ProgressDialog pDialog = new ProgressDialog(mContext);
                         pDialog.setTitle("PDF");
@@ -143,6 +143,12 @@ public class AdapterResult extends RecyclerView.Adapter<AdapterResult.ViewHolder
                         });
                         webView.loadUrl("https://drive.google.com/viewerng/viewer?embedded=true&url=" + "http://" + resultApi.getData().get(getAdapterPosition()).getFiles().get(0));
                         dialog.show();
+imageView_.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        dialog.dismiss();
+    }
+});
                     }
 //                    new DownloadPDF().
 //                            execute("http://"+resultApi.getData().get(getAdapterPosition()).getFiles().get(0).toString());

@@ -51,18 +51,22 @@ public class ResultActivty extends AppCompatActivity {
         setContentView(R.layout.activity_result_activty);
         intilazation();
 
-
         if (isConnected()) {
             //LoadingDialog.showDialog(this);
-            LoadingDialog.showDialog(ResultActivty.this);
+            progressBar.setVisibility(View.VISIBLE);
             mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
             adapterResult=new AdapterResult(this);
             resultuserViewmodle= ViewModelProviders.of(this).get(ResultuserViewmodle.class);
             resultuserViewmodle.getResultuser(SplashScreen.token_user).observe(this, new Observer<ResultApi>() {
                 @Override
                 public void onChanged(ResultApi resultApi) {
-
-                    //  Log.d("TAG", "onChanged: "+resultApi.getData().get(0).getFiles().get(0));
+                    if(resultApi.getData().size()==0)
+                    {
+                        mRecyclerView.setVisibility(View.GONE);
+                        tvView.setVisibility(View.VISIBLE);
+                        tvView.setText("لا يوجد نتائج حاليا");
+                    }
+                    Log.d("TAG", "onResponse:result: "+SplashScreen.token_user);
                     for(int i=0;i<resultApi.getData().size();i++)
                     {Resultcopy re=new Resultcopy();
                         listofresultapi.add(re);
@@ -70,15 +74,10 @@ public class ResultActivty extends AppCompatActivity {
 
                     adapterResult.setlist2(resultApi,listofresultapi);
                     mRecyclerView.setAdapter(adapterResult);
-                    if(listofresultapi.size()==0)
-                    {
-                        mRecyclerView.setVisibility(View.GONE);
-                        tvView.setVisibility(View.VISIBLE);
-                    tvView.setText("لا يوجد نتائج حاليا");
-                    }
+
                 }
             });
-            LoadingDialog.hideDialog();
+
             progressBar.setVisibility(View.GONE);
         }
         else {

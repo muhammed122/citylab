@@ -62,8 +62,9 @@ public class SplashScreen extends AppCompatActivity {
                             if (response.isSuccessful())
                             //save token in application
                             {
-                                Log.d("TAG", "onResponse: " + response.body().getMessage() + retrivedToken);
+                                Log.d("TAG", "onResponse: " + response.body().getData().getToken());
                                 token_user = response.body().getData().getToken();
+
                             }
                         }
                         @Override

@@ -3,6 +3,7 @@ package com.medical.citylap;
 import com.medical.citylap.Interfacess.API;
 import com.medical.citylap.modles.AllOffer;
 import com.medical.citylap.modles.Loginmodle;
+import com.medical.citylap.modles.Reservation;
 import com.medical.citylap.modles.ResultApi;
 import com.medical.citylap.modles.SimpleResponse;
 import com.medical.citylap.modles.UsersResponse;
@@ -18,6 +19,8 @@ public class RetrofitClint {
     private API apiApi;
 
     public RetrofitClint() {
+
+
         Retrofit retrofit=new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create())
         .build();
         apiApi=retrofit.create(API.class);
@@ -53,6 +56,28 @@ public  Call<AllOffer>getoffer()
     return  apiApi.offers();
 
 }
+public Call<SimpleResponse> upload_book(Reservation reservation ,String token)
+{
+    return apiApi.upload_reservation(
+            "Bearer "+token,
+            reservation.getName(),
+            reservation.getPhoneNumber(),
+            reservation.getAge(),
+            reservation.getDay(),
+            reservation.getReservationDate(),
+            reservation.getType(),
+            reservation.getAddress(),
+            reservation.getBuildingNo(),
+            reservation.getFloorNo(),
+            reservation.getAppartementNo(),
+            reservation.getFile()
+
+
+            );
+
+}
+
+
 public  Call<UsersResponse>getalluer(String token)
     {
         return apiApi.getAllUsers(token);
